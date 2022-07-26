@@ -1,0 +1,12 @@
+{
+   "level":[
+      {
+         "type":"grid",
+         "rows":2
+      },
+      {
+         "type":"brick",
+         "rows":3
+      }
+   ]
+}
