@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(name);
         levelcount = 0;
+        score = 0;
     }
 
     
