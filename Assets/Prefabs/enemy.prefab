@@ -135,6 +135,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d1f380ae14526ee4aaf71f73197a7925, type: 3}
   - {fileID: 8300000, guid: efa992d0c82e85d49b05cec64e11ecf5, type: 3}
   SoundEffects: {fileID: 0}
+  flashMaterial: {fileID: 2100000, guid: 13cbb24d85f0f7440a3a72a3961aff2e, type: 2}
+  duration: 0.1
 --- !u!50 &5794693785163303437
 Rigidbody2D:
   serializedVersion: 4

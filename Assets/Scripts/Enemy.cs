@@ -17,11 +17,26 @@ public class Enemy : MonoBehaviour
     int spriteSelector;
     int HP = 1;
     int scoreAdd = 1;
+
+    //Flash Damage Animation
+    [SerializeField]
+    Material flashMaterial;
+
+    [SerializeField]
+    float duration;
+
+    private Material originalMaterial;
+
+    private Coroutine flashRoutine;
+
+
     private void Start()
     {
         StartCoroutine(MoveEnemy());
         SelectSprite();
         SoundEffects = GameObject.FindGameObjectWithTag("EnemySounds").GetComponent<AudioSource>();
+
+        originalMaterial = spriteRenderer.material;
     }
 
     // Update is called once per frame
@@ -86,6 +101,7 @@ public class Enemy : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Bullet")
         {
+            Flash();
             HP--;
             SoundEffects.PlayOneShot(Sounds[0]);
             Destroy(collision.gameObject);
@@ -119,6 +135,29 @@ public class Enemy : MonoBehaviour
                 break;
         }
 
+    }
+
+    public void Flash()
+    {
+
+        if (flashRoutine != null)
+        {
+            StopCoroutine(flashRoutine);
+        }
+
+        flashRoutine = StartCoroutine(FlashRoutine());
+    }
+
+    private IEnumerator FlashRoutine()
+    {
+
+        spriteRenderer.material = flashMaterial;
+
+        yield return new WaitForSeconds(duration);
+
+        spriteRenderer.material = originalMaterial;
+
+        flashRoutine = null;
     }
 
 }
